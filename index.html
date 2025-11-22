@@ -28,6 +28,7 @@ body {
   overflow-x: hidden;
   transition: background 0.5s ease, color 0.5s ease;
 }
+/* Preloader */
 #loader {
   position: fixed; top:0; left:0; width:100%; height:100%;
   background: var(--bg); display:flex; align-items:center; justify-content:center; flex-direction:column;
@@ -39,21 +40,15 @@ body {
   animation: spin 1s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.container { padding: 60px 25px; max-width: 950px; margin:auto; }
-.section {
-  background: var(--card); padding:30px; margin:30px 0; border-radius:18px;
-  backdrop-filter: blur(10px); box-shadow:0 0 25px rgba(0,0,0,0.5);
-  transition: background 0.4s;
-  opacity:0; transform:translateY(50px);
-}
-h1,h2,h3 { text-align:center; background: linear-gradient(to right, var(--accent1), var(--accent2)); -webkit-background-clip:text; color:transparent; }
+/* Animacje scroll */
+.animated { opacity:0; transform: translateY(50px); transition: all 0.8s ease-out; }
+.animated.visible { opacity:1; transform: translateY(0); }
+/* Sekcje */
+.section { background: var(--card); padding:30px; margin:30px 0; border-radius:18px; backdrop-filter: blur(10px); box-shadow:0 0 25px rgba(0,0,0,0.5); transition: background 0.4s; }
+h1,h2,h3 { text-align:center; background: linear-gradient(270deg, var(--accent1), var(--accent2)); background-size:400% 400%; -webkit-background-clip:text; color:transparent; animation: gradientBG 8s ease infinite; }
+@keyframes gradientBG { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
 a { color: var(--accent2); font-weight:700; transition: all 0.3s ease; }
-a:hover { transform: scale(1.05); }
-.animated { opacity:0; transform: translateY(50px); }
-.fade-in { animation: fadeIn 1s forwards; }
-@keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
-.animated-scroll { opacity:0; transform: translateY(50px); transition: all 0.8s ease-out; }
-.animated-scroll.visible { opacity:1; transform:translateY(0); }
+a:hover { transform: scale(1.05); text-shadow:0 0 10px var(--accent2); }
 #settings { position: fixed; top:20px; right:20px; background: var(--card); padding:12px 20px; border-radius:14px; box-shadow:0 0 20px rgba(0,0,0,0.3); backdrop-filter:blur(6px); z-index:999; }
 #settings button { background: var(--accent1); border:none; padding:8px 12px; border-radius:10px; color:#fff; cursor:pointer; margin-right:6px; transition: all 0.3s ease; }
 #settings button:hover { transform:scale(1.05); }
@@ -69,49 +64,42 @@ a:hover { transform: scale(1.05); }
 <p>Ładowanie strony…</p>
 </div>
 <div class="container">
-<h1 class="animated-scroll">🤝 Współpraca z Aderis Development</h1>
-<div class="section animated-scroll">
-<h2>Aderis — Development Premium</h2>
-<p>Profesjonalne serwery Discord • Boty • Strony WWW</p>
-<ul>
+<h1 class="animated">🤝 Współpraca z Aderis Development</h1>
+<div class="section animated">
+<h2 class="animated">Aderis — Development Premium</h2>
+<p class="animated">Profesjonalne serwery Discord • Boty • Strony WWW</p>
+<ul class="animated">
 <li>Szukasz serwera Discord, który wygląda PRO?</li>
 <li>Chcesz unikalnego bota?</li>
 <li>Potrzebujesz fast & modern strony WWW?</li>
 </ul>
-<h3>Co nas wyróżnia?</h3>
-<ul>
+<h3 class="animated">Co nas wyróżnia?</h3>
+<ul class="animated">
 <li>⭐ 50+ ukończonych projektów</li>
 <li>⭐ Projektowanie premium</li>
 <li>⭐ EXPRESS realizacje</li>
 <li>⭐ Wsparcie 24/7</li>
 </ul>
-<p><strong>Discord:</strong> <a href="https://discord.gg/VXThBRHpcy">Kliknij</a></p>
-<p><strong>Strona:</strong> <a href="https://aderis.netlify.app/">Kliknij</a></p>
+<p class="animated"><strong>Discord:</strong> <a href="https://discord.gg/VXThBRHpcy">Kliknij</a></p>
+<p class="animated"><strong>Strona:</strong> <a href="https://aderis.netlify.app/">Kliknij</a></p>
 </div>
-<div class="section animated-scroll">
-<h2>🤖 ProChat — Nasze Partnerstwo</h2>
-<p>Bot Discord • Moderacja • Automatyzacja • Rozrywka • PL Społeczność</p>
-<ul>
+<div class="section animated">
+<h2 class="animated">🤖 ProChat — Nasze Partnerstwo</h2>
+<p class="animated">Bot Discord • Moderacja • Automatyzacja • Rozrywka • PL Społeczność</p>
+<ul class="animated">
 <li>Automatyzacja i moderacja</li>
 <li>Logi, ticket system, ekonomia</li>
-<li>Powitania i pożegnania</li>
+<li>Powitania, pożegnania</li>
 <li>Konkursy, propozycje, ankiety</li>
 <li>Auto-mod i auto-kanały</li>
 </ul>
-<p><strong>Strona:</strong> <a href="https://prochat-bot.netlify.app/">Kliknij</a></p>
-<p><strong>Discord:</strong> <a href="https://discord.gg/nFMe82sH5b">Kliknij</a></p>
+<p class="animated"><strong>Strona:</strong> <a href="https://prochat-bot.netlify.app/">Kliknij</a></p>
+<p class="animated"><strong>Discord:</strong> <a href="https://discord.gg/nFMe82sH5b">Kliknij</a></p>
 </div>
 </div>
 <script>
 const loader = document.getElementById('loader');
-const start = performance.now();
-window.addEventListener('load', () => {
-const loadTime = performance.now() - start;
-let delay = 400;
-if(loadTime>1500) delay=1500;
-if(loadTime>3000) delay=2600;
-setTimeout(()=>{loader.style.opacity='0'; setTimeout(()=>loader.remove(),900);}, delay);
-});
+window.addEventListener('load',()=>{loader.style.opacity='0'; setTimeout(()=>loader.remove(),1000);});
 
 function toggleTheme(){
 let current=document.body.getAttribute('data-theme');
@@ -120,21 +108,19 @@ else document.body.setAttribute('data-theme','dark');
 }
 
 function toggleAnimations(){
-const els=document.querySelectorAll('.animated-scroll');
-els.forEach(el=>{if(el.style.transition){el.style.transition='none';}else{el.style.transition='all 0.8s ease-out';}});
+const els=document.querySelectorAll('.animated');
+els.forEach(el=>{
+if(el.style.transition){el.style.transition='none'; el.style.opacity='1'; el.style.transform='translateY(0)';}
+else{el.style.transition='all 0.8s ease-out'; el.style.opacity='0'; el.style.transform='translateY(50px)';}
+});
 }
 
-// Scroll animations
-const scrollElements = document.querySelectorAll('.animated-scroll');
-function elementInView(el, offset=100){
-  const elementTop = el.getBoundingClientRect().top;
-  return elementTop <= (window.innerHeight - offset);
-}
-function displayScrollElement(){
-  scrollElements.forEach(el=>{if(elementInView(el,150)) el.classList.add('visible');});
-}
-window.addEventListener('scroll', displayScrollElement);
-window.addEventListener('load', displayScrollElement);
+// Scroll Animations
+const animatedElements=document.querySelectorAll('.animated');
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');}});
+},{threshold:0.2});
+animatedElements.forEach(el=>observer.observe(el));
 </script>
 </body>
 </html>
