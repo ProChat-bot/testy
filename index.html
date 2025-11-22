@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Współpraca – Aderis Development</title>
-
-    <!-- FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #05050a;
@@ -34,7 +31,7 @@
             transition: background 0.5s ease, color 0.5s ease;
         }
 
-        /* ŁADOWANIE | FULL ANIMACJE */
+        /* LOADER */
         #loader {
             position: fixed;
             top: 0;
@@ -50,7 +47,6 @@
             z-index: 9999;
             transition: opacity 1s ease;
         }
-
         .ring {
             width: 120px;
             height: 120px;
@@ -59,23 +55,14 @@
             border-top: 10px solid var(--accent1);
             animation: spin 1s linear infinite;
         }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* GŁÓWNE ANIMACJE */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(40px);
-            animation: fadeUp 1s ease forwards !important;
-        }
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        /* ANIMACJE ELEMENTÓW */
+        .animated { opacity: 0; transform: translateY(30px); animation: fadeUp 1s ease forwards; }
+        .animated.delay-1 { animation-delay: 0.3s; }
+        .animated.delay-2 { animation-delay: 0.6s; }
+        .animated.delay-3 { animation-delay: 0.9s; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
         /* KARTY */
         .section {
@@ -86,128 +73,93 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 0 25px rgba(0,0,0,0.5);
             transition: background 0.4s;
-            animation: fadeUp 1.1s ease forwards;
         }
 
-        h1, h2, h3 {
+        h1,h2,h3 {
             text-align: center;
             background: linear-gradient(to right, var(--accent1), var(--accent2));
             -webkit-background-clip: text;
             color: transparent;
         }
-
-        a {
-            color: var(--accent2);
-            font-weight: 700;
-        }
+        a { color: var(--accent2); font-weight: 700; }
 
         /* USTAWIENIA */
-        #settings {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--card);
-            padding: 12px 20px;
-            border-radius: 14px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-            backdrop-filter: blur(6px);
-            z-index: 999;
-        }
-        #settings button {
-            background: var(--accent1);
-            border: none;
-            padding: 8px 12px;
-            border-radius: 10px;
-            color: #fff;
-            cursor: pointer;
-            margin-right: 6px;
-        }
+        #settings { position: fixed; top: 20px; right: 20px; background: var(--card); padding: 12px 20px; border-radius: 14px; box-shadow: 0 0 20px rgba(0,0,0,0.3); backdrop-filter: blur(6px); z-index: 999; }
+        #settings button { background: var(--accent1); border: none; padding: 8px 12px; border-radius: 10px; color: #fff; cursor: pointer; margin-right: 6px; }
     </style>
 </head>
 <body>
-
-<!-- USTAWIENIA UŻYTKOWNIKA -->
 <div id="settings">
     <button onclick="toggleTheme()">🎨 Tryb Jasny/Ciemny</button>
     <button onclick="toggleAnimations()">✨ Animacje ON/OFF</button>
 </div>
 
-<!-- ANIMACJA ŁADOWANIA -->
 <div id="loader">
     <div class="ring"></div>
     <p>Ładowanie strony…</p>
 </div>
 
-<div class="container fade-up" style="padding: 60px 25px; max-width: 950px; margin: auto;">
+<div class="container">
+    <h1 class="animated delay-1">🤝 Współpraca z Aderis Development</h1>
 
-    <h1 class="fade-up">🤝 Współpraca z Aderis Development</h1>
-
-    <div class="section fade-up">
-        <h2>Aderis — Development Premium</h2>
-        <p>Profesjonalne serwery Discord • Boty • Strony WWW</p>
-        <ul>
+    <div class="section animated delay-2">
+        <h2 class="animated delay-2">Aderis — Development Premium</h2>
+        <p class="animated delay-2">Profesjonalne serwery Discord • Boty • Strony WWW</p>
+        <ul class="animated delay-3">
             <li>Szukasz serwera Discord, który wygląda PRO?</li>
             <li>Chcesz unikalnego bota?</li>
             <li>Potrzebujesz fast & modern strony WWW?</li>
         </ul>
-        <h3>Co nas wyróżnia?</h3>
-        <ul>
+        <h3 class="animated delay-3">Co nas wyróżnia?</h3>
+        <ul class="animated delay-3">
             <li>⭐ 50+ ukończonych projektów</li>
             <li>⭐ Projektowanie premium</li>
             <li>⭐ EXPRESS realizacje</li>
             <li>⭐ Wsparcie 24/7</li>
         </ul>
-        <p><strong>Discord:</strong> <a href="https://discord.gg/VXThBRHpcy">Kliknij</a></p>
-        <p><strong>Strona:</strong> <a href="https://aderis.netlify.app/">Kliknij</a></p>
+        <p class="animated delay-3"><strong>Discord:</strong> <a href="https://discord.gg/VXThBRHpcy">Kliknij</a></p>
+        <p class="animated delay-3"><strong>Strona:</strong> <a href="https://aderis.netlify.app/">Kliknij</a></p>
     </div>
 
-    <div class="section fade-up">
-        <h2>🤖 ProChat — Nasze Partnerstwo</h2>
-        <p>Bot Discord • Moderacja • Automatyzacja • Rozrywka • PL Społeczność</p>
-        <h3>Co oferuje ProChat?</h3>
-        <ul>
+    <div class="section animated delay-2">
+        <h2 class="animated delay-2">🤖 ProChat — Nasze Partnerstwo</h2>
+        <p class="animated delay-2">Bot Discord • Moderacja • Automatyzacja • Rozrywka • PL Społeczność</p>
+        <ul class="animated delay-3">
             <li>Automatyzacja i moderacja</li>
             <li>Logi, ticket system, ekonomia</li>
             <li>Powitania i pożegnania</li>
             <li>Konkursy, propozycje, ankiety</li>
             <li>Auto-mod i auto-kanały</li>
         </ul>
-        <p><strong>Strona:</strong> <a href="https://prochat-bot.netlify.app/">Kliknij</a></p>
-        <p><strong>Discord:</strong> <a href="https://discord.gg/nFMe82sH5b">Kliknij</a></p>
+        <p class="animated delay-3"><strong>Strona:</strong> <a href="https://prochat-bot.netlify.app/">Kliknij</a></p>
+        <p class="animated delay-3"><strong>Discord:</strong> <a href="https://discord.gg/nFMe82sH5b">Kliknij</a></p>
     </div>
 </div>
 
 <script>
-    /* ŁADOWANIE ZALEŻNE OD NETU */
     const loader = document.getElementById('loader');
     const start = performance.now();
-
     window.addEventListener('load', () => {
         const loadTime = performance.now() - start;
         let delay = 400;
-        if (loadTime > 1500) delay = 1500;
-        if (loadTime > 3000) delay = 2600;
-        setTimeout(() => {
-            loader.style.opacity = '0';
-            setTimeout(() => loader.remove(), 900);
-        }, delay);
+        if(loadTime > 1500) delay = 1500;
+        if(loadTime > 3000) delay = 2600;
+        setTimeout(() => { loader.style.opacity='0'; setTimeout(()=>loader.remove(),900); }, delay);
     });
 
-    /* TRYB JASNY / CIEMNY */
     function toggleTheme() {
         let current = document.body.getAttribute('data-theme');
-        if (!current || current === "dark") document.body.setAttribute('data-theme', 'light');
-        else document.body.setAttribute('data-theme', 'dark');
+        if(!current || current==='dark') document.body.setAttribute('data-theme','light');
+        else document.body.setAttribute('data-theme','dark');
     }
 
-    /* WYŁĄCZ / WŁĄCZ ANIMACJE */
     function toggleAnimations() {
-        const animated = document.querySelectorAll('*');
-        animated.forEach(el => {
-            el.style.animation = el.style.animation ? '' : 'fadeUp 1s ease forwards';
+        const els = document.querySelectorAll('.animated');
+        els.forEach(el => {
+            if(el.style.animation) el.style.animation = '';
+            else el.style.animation = 'fadeUp 1s ease forwards';
         });
     }
 </script>
-
 </body>
 </html>
