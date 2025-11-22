@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Współpraca – Aderis Development</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: radial-gradient(circle at top, #0f0f17, #05050a);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* ANIMACJA ŁADOWANIA */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #05050a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 0.8s ease;
+        }
+
+        .loader-ring {
+            width: 80px;
+            height: 80px;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            border-top: 6px solid #5865f2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* TREŚĆ STRONY */
+        .container {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(to right,#6a5cff,#8a7bff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+            backdrop-filter: blur(6px);
+            animation: fadeIn 1.2s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        a {
+            color: #8a7bff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<!-- ANIMACJA ŁADOWANIA -->
+<div id="loader">
+    <div class="loader-ring"></div>
+    <p style="margin-top: 15px; opacity: 0.7;">Ładowanie…</p>
+</div>
+
+<div class="container">
+
+    <h1>🤝 Współpraca z Aderis Development</h1>
+
+    <div class="section">
+        <h2>Aderis — Development Premium</h2>
+        <p>Profesjonalne serwery Discord • Boty na zamówienie • Strony WWW</p>
+        <ul>
+            <li>Szukasz serwera Discord, który wygląda PRO?</li>
+            <li>Chcesz mieć własnego bota z unikalnymi funkcjami?</li>
+            <li>Potrzebujesz nowoczesnej, szybkiej strony WWW?</li>
+        </ul>
+        <p>Aderis to zespół developerów dostarczający projekty na najwyższym poziomie — szybko i czysto.</p>
+
+        <h3>Co nas wyróżnia?</h3>
+        <ul>
+            <li>⭐ Ponad 50 ukończonych projektów</li>
+            <li>⭐ Projektowanie premium</li>
+            <li>⭐ Realizacja EXPRESS</li>
+            <li>⭐ Transparentna współpraca</li>
+            <li>⭐ Wsparcie 24/7</li>
+        </ul>
+
+        <p><strong>Discord:</strong> <a href="https://discord.gg/VXThBRHpcy">https://discord.gg/VXThBRHpcy</a></p>
+        <p><strong>Strona WWW:</strong> <a href="https://aderis.netlify.app/">https://aderis.netlify.app/</a></p>
+    </div>
+
+    <div class="section">
+        <h2>🤖 ProChat — Nasze Partnerstwo</h2>
+        <p>Bot Discord • Moderacja • Automatyzacja • Rozrywka • PL społeczność</p>
+
+        <p>ProChat to polski bot Discord łączący:</p>
+        <ul>
+            <li>Automatyzację i moderację</li>
+            <li>Logi, ticket system i ekonomię</li>
+            <li>Powitania i pożegnania</li>
+            <li>Konkursy, ankiety i propozycje</li>
+            <li>Auto-moderację i auto-kanały</li>
+        </ul>
+
+        <h3>Co oferujemy razem?</h3>
+        <ul>
+            <li>⭐ Wsparcie 24/7</li>
+            <li>⭐ Regularne aktualizacje</li>
+            <li>⭐ Partnerstwo dające pełną automatyzację</li>
+        </ul>
+
+        <p><strong>Strona:</strong> <a href="https://prochat-bot.netlify.app/">https://prochat-bot.netlify.app/</a></p>
+        <p><strong>Discord:</strong> <a href="https://discord.gg/nFMe82sH5b">https://discord.gg/nFMe82sH5b</a></p>
+    </div>
+</div>
+
+<!-- SKRYPT ZALEŻNY OD SZYBKOŚCI INTERNETU -->
+<script>
+    const loader = document.getElementById('loader');
+    const start = performance.now();
+
+    window.addEventListener('load', () => {
+        const loadTime = performance.now() - start;
+        let delay = 300; // szybkie ładowanie
+
+        if (loadTime > 1200) delay = 1200;
+        if (loadTime > 2500) delay = 2000;
+        if (loadTime > 4000) delay = 3500;
+
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.remove(), 800);
+        }, delay);
+    });
+</script>
+
+</body>
+</html>
