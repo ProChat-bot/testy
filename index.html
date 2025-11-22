@@ -1,165 +1,140 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Współpraca – Aderis Development</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #05050a;
-            --text: #ffffff;
-            --accent1: #6a5cff;
-            --accent2: #8a7bff;
-            --card: rgba(255, 255, 255, 0.07);
-        }
-
-        [data-theme="light"] {
-            --bg: #f5f5f5;
-            --text: #111;
-            --accent1: #5a48ff;
-            --accent2: #7b6aff;
-            --card: rgba(0, 0, 0, 0.05);
-        }
-
-        body {
-            margin: 0;
-            font-family: "Poppins", sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-            transition: background 0.5s ease, color 0.5s ease;
-        }
-
-        /* LOADER */
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 20px;
-            z-index: 9999;
-            transition: opacity 1s ease;
-        }
-        .ring {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 10px solid rgba(255,255,255,0.15);
-            border-top: 10px solid var(--accent1);
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* ANIMACJE ELEMENTÓW */
-        .animated { opacity: 0; transform: translateY(30px); animation: fadeUp 1s ease forwards; }
-        .animated.delay-1 { animation-delay: 0.3s; }
-        .animated.delay-2 { animation-delay: 0.6s; }
-        .animated.delay-3 { animation-delay: 0.9s; }
-        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-
-        /* KARTY */
-        .section {
-            background: var(--card);
-            padding: 30px;
-            margin: 30px 0;
-            border-radius: 18px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 25px rgba(0,0,0,0.5);
-            transition: background 0.4s;
-        }
-
-        h1,h2,h3 {
-            text-align: center;
-            background: linear-gradient(to right, var(--accent1), var(--accent2));
-            -webkit-background-clip: text;
-            color: transparent;
-        }
-        a { color: var(--accent2); font-weight: 700; }
-
-        /* USTAWIENIA */
-        #settings { position: fixed; top: 20px; right: 20px; background: var(--card); padding: 12px 20px; border-radius: 14px; box-shadow: 0 0 20px rgba(0,0,0,0.3); backdrop-filter: blur(6px); z-index: 999; }
-        #settings button { background: var(--accent1); border: none; padding: 8px 12px; border-radius: 10px; color: #fff; cursor: pointer; margin-right: 6px; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Współpraca – Aderis Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #05050a;
+  --text: #ffffff;
+  --accent1: #6a5cff;
+  --accent2: #8a7bff;
+  --card: rgba(255, 255, 255, 0.07);
+}
+[data-theme="light"] {
+  --bg: #f5f5f5;
+  --text: #111;
+  --accent1: #5a48ff;
+  --accent2: #7b6aff;
+  --card: rgba(0,0,0,0.05);
+}
+body {
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  transition: background 0.5s ease, color 0.5s ease;
+}
+#loader {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: var(--bg); display:flex; align-items:center; justify-content:center; flex-direction:column;
+  z-index:9999; transition: opacity 1s ease;
+}
+.ring {
+  width:120px; height:120px; border-radius:50%;
+  border:10px solid rgba(255,255,255,0.15); border-top:10px solid var(--accent1);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.container { padding: 60px 25px; max-width: 950px; margin:auto; }
+.section {
+  background: var(--card); padding:30px; margin:30px 0; border-radius:18px;
+  backdrop-filter: blur(10px); box-shadow:0 0 25px rgba(0,0,0,0.5);
+  transition: background 0.4s;
+  opacity:0; transform:translateY(50px);
+}
+h1,h2,h3 { text-align:center; background: linear-gradient(to right, var(--accent1), var(--accent2)); -webkit-background-clip:text; color:transparent; }
+a { color: var(--accent2); font-weight:700; transition: all 0.3s ease; }
+a:hover { transform: scale(1.05); }
+.animated { opacity:0; transform: translateY(50px); }
+.fade-in { animation: fadeIn 1s forwards; }
+@keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+.animated-scroll { opacity:0; transform: translateY(50px); transition: all 0.8s ease-out; }
+.animated-scroll.visible { opacity:1; transform:translateY(0); }
+#settings { position: fixed; top:20px; right:20px; background: var(--card); padding:12px 20px; border-radius:14px; box-shadow:0 0 20px rgba(0,0,0,0.3); backdrop-filter:blur(6px); z-index:999; }
+#settings button { background: var(--accent1); border:none; padding:8px 12px; border-radius:10px; color:#fff; cursor:pointer; margin-right:6px; transition: all 0.3s ease; }
+#settings button:hover { transform:scale(1.05); }
+</style>
 </head>
 <body>
 <div id="settings">
-    <button onclick="toggleTheme()">🎨 Tryb Jasny/Ciemny</button>
-    <button onclick="toggleAnimations()">✨ Animacje ON/OFF</button>
+<button onclick="toggleTheme()">🎨 Tryb Jasny/Ciemny</button>
+<button onclick="toggleAnimations()">✨ Animacje ON/OFF</button>
 </div>
-
 <div id="loader">
-    <div class="ring"></div>
-    <p>Ładowanie strony…</p>
+<div class="ring"></div>
+<p>Ładowanie strony…</p>
 </div>
-
 <div class="container">
-    <h1 class="animated delay-1">🤝 Współpraca z Aderis Development</h1>
-
-    <div class="section animated delay-2">
-        <h2 class="animated delay-2">Aderis — Development Premium</h2>
-        <p class="animated delay-2">Profesjonalne serwery Discord • Boty • Strony WWW</p>
-        <ul class="animated delay-3">
-            <li>Szukasz serwera Discord, który wygląda PRO?</li>
-            <li>Chcesz unikalnego bota?</li>
-            <li>Potrzebujesz fast & modern strony WWW?</li>
-        </ul>
-        <h3 class="animated delay-3">Co nas wyróżnia?</h3>
-        <ul class="animated delay-3">
-            <li>⭐ 50+ ukończonych projektów</li>
-            <li>⭐ Projektowanie premium</li>
-            <li>⭐ EXPRESS realizacje</li>
-            <li>⭐ Wsparcie 24/7</li>
-        </ul>
-        <p class="animated delay-3"><strong>Discord:</strong> <a href="https://discord.gg/VXThBRHpcy">Kliknij</a></p>
-        <p class="animated delay-3"><strong>Strona:</strong> <a href="https://aderis.netlify.app/">Kliknij</a></p>
-    </div>
-
-    <div class="section animated delay-2">
-        <h2 class="animated delay-2">🤖 ProChat — Nasze Partnerstwo</h2>
-        <p class="animated delay-2">Bot Discord • Moderacja • Automatyzacja • Rozrywka • PL Społeczność</p>
-        <ul class="animated delay-3">
-            <li>Automatyzacja i moderacja</li>
-            <li>Logi, ticket system, ekonomia</li>
-            <li>Powitania i pożegnania</li>
-            <li>Konkursy, propozycje, ankiety</li>
-            <li>Auto-mod i auto-kanały</li>
-        </ul>
-        <p class="animated delay-3"><strong>Strona:</strong> <a href="https://prochat-bot.netlify.app/">Kliknij</a></p>
-        <p class="animated delay-3"><strong>Discord:</strong> <a href="https://discord.gg/nFMe82sH5b">Kliknij</a></p>
-    </div>
+<h1 class="animated-scroll">🤝 Współpraca z Aderis Development</h1>
+<div class="section animated-scroll">
+<h2>Aderis — Development Premium</h2>
+<p>Profesjonalne serwery Discord • Boty • Strony WWW</p>
+<ul>
+<li>Szukasz serwera Discord, który wygląda PRO?</li>
+<li>Chcesz unikalnego bota?</li>
+<li>Potrzebujesz fast & modern strony WWW?</li>
+</ul>
+<h3>Co nas wyróżnia?</h3>
+<ul>
+<li>⭐ 50+ ukończonych projektów</li>
+<li>⭐ Projektowanie premium</li>
+<li>⭐ EXPRESS realizacje</li>
+<li>⭐ Wsparcie 24/7</li>
+</ul>
+<p><strong>Discord:</strong> <a href="https://discord.gg/VXThBRHpcy">Kliknij</a></p>
+<p><strong>Strona:</strong> <a href="https://aderis.netlify.app/">Kliknij</a></p>
 </div>
-
+<div class="section animated-scroll">
+<h2>🤖 ProChat — Nasze Partnerstwo</h2>
+<p>Bot Discord • Moderacja • Automatyzacja • Rozrywka • PL Społeczność</p>
+<ul>
+<li>Automatyzacja i moderacja</li>
+<li>Logi, ticket system, ekonomia</li>
+<li>Powitania i pożegnania</li>
+<li>Konkursy, propozycje, ankiety</li>
+<li>Auto-mod i auto-kanały</li>
+</ul>
+<p><strong>Strona:</strong> <a href="https://prochat-bot.netlify.app/">Kliknij</a></p>
+<p><strong>Discord:</strong> <a href="https://discord.gg/nFMe82sH5b">Kliknij</a></p>
+</div>
+</div>
 <script>
-    const loader = document.getElementById('loader');
-    const start = performance.now();
-    window.addEventListener('load', () => {
-        const loadTime = performance.now() - start;
-        let delay = 400;
-        if(loadTime > 1500) delay = 1500;
-        if(loadTime > 3000) delay = 2600;
-        setTimeout(() => { loader.style.opacity='0'; setTimeout(()=>loader.remove(),900); }, delay);
-    });
+const loader = document.getElementById('loader');
+const start = performance.now();
+window.addEventListener('load', () => {
+const loadTime = performance.now() - start;
+let delay = 400;
+if(loadTime>1500) delay=1500;
+if(loadTime>3000) delay=2600;
+setTimeout(()=>{loader.style.opacity='0'; setTimeout(()=>loader.remove(),900);}, delay);
+});
 
-    function toggleTheme() {
-        let current = document.body.getAttribute('data-theme');
-        if(!current || current==='dark') document.body.setAttribute('data-theme','light');
-        else document.body.setAttribute('data-theme','dark');
-    }
+function toggleTheme(){
+let current=document.body.getAttribute('data-theme');
+if(!current||current==='dark') document.body.setAttribute('data-theme','light');
+else document.body.setAttribute('data-theme','dark');
+}
 
-    function toggleAnimations() {
-        const els = document.querySelectorAll('.animated');
-        els.forEach(el => {
-            if(el.style.animation) el.style.animation = '';
-            else el.style.animation = 'fadeUp 1s ease forwards';
-        });
-    }
+function toggleAnimations(){
+const els=document.querySelectorAll('.animated-scroll');
+els.forEach(el=>{if(el.style.transition){el.style.transition='none';}else{el.style.transition='all 0.8s ease-out';}});
+}
+
+// Scroll animations
+const scrollElements = document.querySelectorAll('.animated-scroll');
+function elementInView(el, offset=100){
+  const elementTop = el.getBoundingClientRect().top;
+  return elementTop <= (window.innerHeight - offset);
+}
+function displayScrollElement(){
+  scrollElements.forEach(el=>{if(elementInView(el,150)) el.classList.add('visible');});
+}
+window.addEventListener('scroll', displayScrollElement);
+window.addEventListener('load', displayScrollElement);
 </script>
 </body>
 </html>
